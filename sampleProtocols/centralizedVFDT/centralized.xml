@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns="http://uv.mx/hlimon"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://uv.mx/hlimon sys.xsd">
+
+<name>centralized</name>
+
+<agents>
+  <agent>
+    <program>contactPerson</program>
+    <file>../sampleProtocols/centralizedVFDT/contactPerson.asl</file>
+  </agent>
+</agents>
+
+</config>

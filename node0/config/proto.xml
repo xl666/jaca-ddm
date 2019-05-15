@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns="http://uv.mx/hlimon"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://uv.mx/hlimon sys.xsd">
+
+<name>contraEjemplos</name>
+
+<agents>
+  <agent>
+    <program>coordinator</program>
+    <file>./asl/coordinator.asl</file>
+  </agent>
+  <agent>
+    <program>worker</program>
+    <file>./asl/worker.asl</file>
+  </agent>
+  <agent>
+    <program>linker</program>
+    <file>./asl/lynker.asl</file>
+  </agent>
+</agents>
+
+<params>
+  <param>
+    <name>numReps</name>
+    <type>int</type>
+  </param>
+</params>
+
+</config>

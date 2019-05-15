@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config xmlns="http://uv.mx/hlimon"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://uv.mx/hlimon sys.xsd">
+
+  <name>CounterGPU</name>
+
+  <agents>
+    <agent>
+      <program>contactPerson</program>
+      <file>../sampleProtocols/counterGPU/contactPerson.asl</file>
+    </agent>
+    <agent>
+      <program>worker</program>
+      <file>../sampleProtocols/counterGPU/worker.asl</file>
+    </agent>
+    <agent>
+      <program>roundController</program>
+      <file>../sampleProtocols/counterGPU/roundController.asl</file>
+    </agent>
+  </agents>
+
+  <params>
+    <param>
+      <name>Pruning</name>
+      <type>boolean</type>
+    </param>
+    <param>
+      <name>Init Percentage</name>
+      <type>double</type>
+    </param>
+    <param>
+      <name>Max Rounds</name>
+      <type>int</type>
+    </param>
+    <param>
+      <name>Test Percentaje For Rounds</name>
+      <type>double</type>
+    </param>
+    <param>
+      <name>Change step</name>
+      <type>double</type>
+    </param>
+    <param>
+      <name>Initial counter examples filtering</name>
+      <type>double</type>
+    </param>
+    <param>
+      <name>Counter examples filtering step</name>
+      <type>double</type>
+    </param>
+    <param>
+      <name>Min counters to filter</name>
+      <type>int</type>
+    </param>
+  </params>
+
+</config>

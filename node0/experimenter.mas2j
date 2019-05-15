@@ -1,0 +1,15 @@
+MAS experimenter {
+
+	//infrastructure: JaCaMo("infrastructure")
+	infrastructure: Centralised
+
+	environment: c4jason.CartagoEnvironment("infrastructure")
+
+	agents:
+		experimenter agentArchClass c4jason.CAgentArch;
+		//prueba;
+		//agent1 sample_agent;
+
+	aslSourcePath:
+		"src/asl";
+}

@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://uv.mx/hlimon"
+xmlns="http://uv.mx/hlimon"
+elementFormDefault="qualified">
+
+<xs:element name="config">
+  <xs:complexType>
+    <xs:sequence>
+
+      <xs:element name="node0" minOccurs="0">
+	  <xs:complexType>
+	     <xs:all>
+		  <xs:element name="name" type="xs:string" default="node0" minOccurs="0"/>
+		  <xs:element name="ip" type="xs:string" default="localhost"/>
+	     </xs:all>
+	  </xs:complexType>
+      </xs:element>
+
+
+      <xs:element name="nodes">
+	<xs:complexType>
+	  <xs:sequence>
+	    <xs:element name="node" type="node" maxOccurs="unbounded"/> 
+	  </xs:sequence>
+	</xs:complexType>	
+      </xs:element>
+
+
+      <xs:element name="strategy">
+	<xs:complexType>
+	  <xs:all>
+	    <xs:element name="file" type="xs:string"/>
+	    <xs:element name="params" type="paramsTemplate" minOccurs="0"/>
+	  </xs:all>
+	</xs:complexType>	
+      </xs:element>
+
+      <xs:element name="distribution">
+	<xs:complexType>
+	  <xs:sequence>
+	    <xs:element name="agents" maxOccurs="unbounded">
+	      <xs:complexType>
+		<xs:all>
+		  <xs:element name="program" type="xs:string"/>
+		  <xs:element name="node" type="xs:string"/>
+		  <xs:element name="number" type="xs:decimal"  minOccurs="0" default="1"/>
+		</xs:all>
+	      </xs:complexType>	
+	    </xs:element>
+	  </xs:sequence>
+	</xs:complexType>	
+      </xs:element>
+
+      <xs:element name="evaluation">
+	<xs:complexType>
+	  <xs:all>
+	    <xs:element name="name" type="xs:string"/>
+	    <xs:element name="typeDataSource" type="xs:string"/>
+	    <xs:element name="params" type="paramsTemplate"/>
+	  </xs:all>
+	</xs:complexType>	
+      </xs:element>
+      
+      <xs:element name="reps" type="xs:decimal"  minOccurs="0" default="1"/>
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+
+<xs:complexType name="node">
+  <xs:all>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="ip" type="xs:string"/>
+    <xs:element name="user" type="xs:string"  minOccurs="0"/>
+    <xs:element name="pass" type="xs:string" minOccurs="0"/>
+    <xs:element name="file" type="xs:string"/>
+  </xs:all>
+</xs:complexType>	
+
+<xs:complexType name="paramTemplate">
+  <xs:all>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="value" type="xs:string"/>
+    <xs:element name="type" type="xs:string"/>
+  </xs:all>
+</xs:complexType>	
+
+<xs:complexType name="paramsTemplate">
+  <xs:sequence>
+    <xs:element name="param" type="paramTemplate" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>	
+
+
+
+</xs:schema> 

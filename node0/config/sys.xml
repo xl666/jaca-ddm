@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config xmlns="http://uv.mx/hlimon"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://uv.mx/hlimon sys.xsd">
+
+  <server><name>servidor</name></server>
+
+  <clients>
+    <client>
+      <name>c1</name>
+      <ip>192.168.0.1</ip>
+    </client>
+  </clients>
+
+  <protocol>
+    <file>./protocolo.xml</file>
+    <params>
+      <param>
+	<name>numEvals</name>
+	<value>2</value>
+      </param>
+    </params>
+  </protocol>
+
+  <distribution>  
+    <agents>
+      <type>coordinator</type>
+      <location>server</location>
+    </agents>
+    <agents>
+      <type>worker</type>
+      <location>c1</location>
+      <number>5</number>
+    </agents>
+  </distribution>
+
+  <evaluation>
+    <name>hold_out</name>
+    <params>
+      <param>
+	<name>trainPer</name>
+	<value>66</value>
+      </param>
+    </params>
+  </evaluation>
+
+  <reps>10</reps>
+
+</config>

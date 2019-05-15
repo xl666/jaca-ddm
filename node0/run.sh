@@ -1,0 +1,1 @@
+java    -classpath lib/jason.jar:bin/classes:lib/weka.jar:lib/cartago.jar:lib/c4jason.jar:lib/jacamo.jar:lib/moa.jar:lib/moise.jar:lib/pentaho.jar:lib/sizeofag-1.0.0.jar:lib/jcuda.jar jason.infra.centralised.RunCentralisedMAS experimenter.mas2j

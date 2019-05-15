@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config xmlns="http://uv.mx/hlimon"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://uv.mx/hlimon sys.xsd">
+
+  <name>Centralized Bagging</name>
+
+  <agents>
+    <agent>
+      <program>contactPerson</program>
+      <file>../sampleProtocols/centralizedBagging/contactPerson.asl</file>
+    </agent>
+  </agents>
+
+  <params>
+    <param>
+      <name>Number of models</name>
+      <type>int</type>
+    </param>
+    <param>
+      <name>Threads</name>
+      <type>int</type>
+    </param>
+    <param>
+      <name>Classifier</name>
+      <type>string</type>
+    </param>
+    <param>
+      <name>Classifier parameters</name>
+      <type>string</type>
+    </param>
+  </params>
+
+</config>

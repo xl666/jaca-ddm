@@ -1,0 +1,6 @@
+*~
+*#
+/node0/bin/
+/node0/scripts/__pycache__/
+*.pyc
+*orig

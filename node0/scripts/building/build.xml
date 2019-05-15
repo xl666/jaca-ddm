@@ -1,0 +1,109 @@
+<project basedir="../.." default="run" name="experimenter">
+
+    <property name="mas2j.project.file" value="experimenter.mas2j" />
+    <property name="debug" value="" /> 
+    <property name="build.dir" value="${basedir}/bin/classes" />
+
+    <property name="jasonJar" value="${basedir}/lib/jason.jar" />
+
+    <path id="project.classpath">
+        <pathelement location="${basedir}" />
+        <pathelement location="${build.dir}" />
+        <pathelement location="${jasonJar}" />
+        <pathelement location="${basedir}/lib/cartago.jar" />
+        <pathelement location="${basedir}/lib/c4jason.jar" />
+        <fileset dir="${basedir}/lib">  <include name="*.jar" /> </fileset>
+
+    </path>
+
+    
+    <target name="user-init">
+    </target>
+    <target name="user-end">
+    </target>
+
+    <target name="init">
+        <mkdir dir="${build.dir}" />
+        <antcall target="user-init" />
+    </target>
+
+    <target depends="init" name="compile">
+        <condition else="${basedir}" property="srcdir" value="${basedir}/src/java">
+            <available file="${basedir}/src/java" />
+        </condition>
+        <javac debug="true" destdir="${build.dir}" includeantruntime="false" optimize="true" srcdir="${srcdir}">
+            <classpath refid="project.classpath" />
+        </javac>
+    </target>
+    
+    <target depends="compile" name="jar">
+        <delete file="${ant.project.name}.jar" />
+        <copy file="${jasonJar}" tofile="${ant.project.name}.jar" />
+        <copy file="${mas2j.project.file}" tofile="default.mas2j" />
+        <jar jarfile="${ant.project.name}.jar" update="yes">
+            <fileset dir="${basedir}">
+                <include name="**/*.asl" />
+                <include name="**/*.mas2j" />
+		<include name="ptx/**" />
+            <include name="artifacts/**" /></fileset>
+            <fileset dir="${build.dir}">
+                <include name="**/*.class" />
+            </fileset>
+	    <zipfileset src="${basedir}/lib/moa.jar" />
+	    <zipfileset src="${basedir}/lib/weka.jar" />
+	    <zipfileset src="${basedir}/lib/cartago.jar" />
+	    <zipfileset src="${basedir}/lib/jcuda.jar" />
+	    <zipfileset src="${basedir}/lib/modl_gkclass.jar" />
+<!--	    
+	    <zipfileset src="${basedir}/lib/moa.jar" />
+	    
+	    <zipfileset src="${basedir}/lib/pentaho.jar" />
+	    <zipfileset src="${basedir}/lib/modl_gkclass.jar" />
+	   -->
+            <manifest>
+                  <attribute name="Main-Class" value="jason.infra.centralised.RunCentralisedMAS" />
+            </manifest>
+        </jar>
+        <delete file="default.mas2j" />
+    </target>
+
+    
+    <target depends="jar" name="jnlp">
+        <mkdir dir="${basedir}/${ant.project.name}-jws" />
+        <java classname="jason.infra.centralised.CreateJNLP" dir="${basedir}/${ant.project.name}-jws" failonerror="true" fork="yes">
+            <classpath refid="project.classpath" />
+            <arg line="${ant.project.name} ${mas2j.project.file}" />
+        </java>
+        <copy failonerror="no" todir="${basedir}/${ant.project.name}-jws">
+            <fileset dir="${basedir}/lib" includes="**/*.jar" />
+            <fileset dir="${basedir}" includes="${ant.project.name}.jar" />
+            <fileset dir="/home/xl666/Jason-1.4.0/Jason-1.4.0/src/images" includes="Jason-GMoreau-Icon.jpg" />
+        </copy>
+        <signjar alias="jason" jar="${basedir}/${ant.project.name}-jws/${ant.project.name}.jar" keypass="rbjhja" keystore="/home/xl666/Jason-1.4.0/Jason-1.4.0/src/jasonKeystore" storepass="rbjhja" />
+        <echo message="**" />
+        <echo message="** Java Web Start application created in directory ${ant.project.name}-jws" />
+        <echo message="** Update the codebase (in the second line of the .jnlp file)" />
+        <echo message="** with the URL where you will upload the application." />
+        <echo message="**" />
+    </target>   
+
+
+    <target depends="compile" name="run">
+        <echo message="Running project ${ant.project.name}" />
+        <java classname="jason.infra.centralised.RunCentralisedMAS" dir="${basedir}" failonerror="true" fork="yes">
+            <classpath refid="project.classpath" />
+            <arg line="${mas2j.project.file} ${debug} " />
+                
+        </java>
+        <antcall target="user-end" />
+    </target>
+
+    <target name="clean">
+        <delete failonerror="no" includeEmptyDirs="true" verbose="true">
+            <fileset dir="${basedir}" includes="**/*.class" />
+        </delete>
+    </target>
+
+
+
+</project>

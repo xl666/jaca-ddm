@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns="http://uv.mx/hlimon"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://uv.mx/hlimon sys.xsd">
+
+<name>Centralizing</name>
+
+<agents>
+  <agent>
+    <program>contactPerson</program>
+    <file>../sampleProtocols/centralizing/contactPerson.asl</file>
+  </agent>
+   <agent>
+    <program>sender</program>
+    <file>../sampleProtocols/centralizing/sender.asl</file>
+  </agent>
+</agents>
+
+<params>
+  <param>
+    <name>Pruning</name>
+    <type>boolean</type>
+  </param>
+    <param>
+    <name>Classifier</name>
+    <type>string</type>
+  </param>
+</params>
+
+</config>

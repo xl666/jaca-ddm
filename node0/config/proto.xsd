@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://uv.mx/hlimon"
+xmlns="http://uv.mx/hlimon"
+elementFormDefault="qualified">
+
+<xs:element name="config">
+  <xs:complexType>
+    <xs:sequence>
+
+      <xs:element name="name" type="xs:string"/>
+
+
+      <xs:element name="agents">
+	<xs:complexType>
+	  <xs:sequence>
+	    
+	    <xs:element name="agent" maxOccurs="unbounded">
+	      <xs:complexType>
+		<xs:all>
+		  <xs:element name="program" type="xs:string"/>
+		  <xs:element name="file" type="xs:string"/>
+		</xs:all>
+	      </xs:complexType>	
+	    </xs:element>
+
+	  </xs:sequence>
+	</xs:complexType>	
+      </xs:element>
+
+      <xs:element name="contactPersonAgent" type="xs:string" default="contactPerson" minOccurs="0"/>
+
+
+      <xs:element name="artifacts" minOccurs="0">
+	<xs:complexType>
+	  <xs:sequence>
+	    
+	    <xs:element name="artifact" maxOccurs="unbounded">
+	      <xs:complexType>
+		<xs:all>
+		  <xs:element name="type" type="xs:string"/>
+		  <xs:element name="file" type="xs:string"/>
+		</xs:all>
+	      </xs:complexType>	
+	    </xs:element>
+
+	  </xs:sequence>
+	</xs:complexType>	
+      </xs:element>
+
+      <xs:element name="params" type="paramsTemplate" minOccurs="0"/>
+
+
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+
+<xs:complexType name="paramTemplate">
+  <xs:all>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="type">
+      <xs:simpleType>
+	<xs:restriction base="xs:string">
+	  <xs:enumeration value="string"/>
+	  <xs:enumeration value="int"/>
+	  <xs:enumeration value="double"/>
+	  <xs:enumeration value="boolean"/>
+	</xs:restriction>
+      </xs:simpleType>
+    </xs:element> 
+  </xs:all>
+</xs:complexType>	
+
+<xs:complexType name="paramsTemplate">
+  <xs:sequence>
+    <xs:element name="param" type="paramTemplate" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>	
+
+
+</xs:schema> 
