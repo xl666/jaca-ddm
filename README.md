@@ -14,4 +14,18 @@ JaCa-DDM can be extended through the adding of new learning strategies and artif
 
 - Java >= 1.8.
 - CUDA 7 or greater (only for GPU-based strategies).
-- Python 2 or Python 3 for runnning experimetns on headless mode.
+- Python 2 or Python 3 for running experiments on headless mode.
+
+## Quick installation
+
+JaCa-DDM includes three directories:
+
+- node0. It contains the binaries, libraries, and source code related to the computer controlling the experiments. It can be though as the main program, launching the graphic user interface of JaCa-DDM. In a Unix like system you must execute in this directory:
+
+'''
+> run.sh
+'''
+
+This launches the JaCa-DDM gui:
+
+![Jaca-DDM gui](/img/jaca-ddm-gui.png)
