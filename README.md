@@ -9,3 +9,9 @@ JaCa-DDM considers any kind of environment where data is split in various sites,
 JaCa-DDM is a tool for experimenting with different DDM approaches, as it evaluates the produced classification model, yielding various performance statistics (total time, classification accuracy, network traffic produced, model complexity, confusion matrix).
 
 JaCa-DDM can be extended through the adding of new learning strategies and artifacts. Artifacts are first-class entities in the agent environment that encapsulate services, in the case of JaCa-DDM, these services consists on Weka related tools.
+
+## Software requirements
+
+- Java >= 1.8.
+- CUDA 7 or greater (only for GPU-based strategies).
+- Python 2 or Python 3 for runnning experimetns on headless mode.
