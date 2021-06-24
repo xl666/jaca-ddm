@@ -22,7 +22,7 @@ JaCa-DDM can be extended through the adding of new learning strategies and artif
 
 JaCa-DDM includes three directories:
 
-- node0. It contains the binaries, libraries, and source code related to the computer controlling the experiments. It can be though as the main program, launching the graphic user interface of JaCa-DDM. In a Unix like system you must execute in this directory:
+- node0. It contains the binaries, libraries, and source code related to the computer controlling the experiments and running the agents in the system. It can be though as the main program, launching the graphic user interface of JaCa-DDM. In a Unix like system you must execute in this directory:
 
 ```
 > ./run.sh
