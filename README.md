@@ -36,3 +36,5 @@ This launches the JaCa-DDM gui:
 > ./run.sh localhost 8080
 CArtAgO Node Ready on localhost:8080
 ```
+
+- sampleProtocols: It contains various directories, defining learning strategies. Each strategy includes its definition as an `XML` file and the involved agent programs as `asl` files. You only need this directory on the same computer running the node0.
